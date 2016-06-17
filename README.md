@@ -1,8 +1,11 @@
 
 ## 常见下拉菜单 common dropdown menu 
 
+## 下拉菜单
+
 ### HTML结构
 网页中导航栏是一个很常见的组件。通常，我们使用无序列表来制作导航栏。比如
+
 	<div id="nav">
 		<ul class="navMenu">
 			<li><a href="">首页</a></li>
@@ -14,6 +17,7 @@
 	</div>
 
 有些导航栏有下拉的二级菜单，那么我们在相应的位置上再加上列表构成二级菜单，比如
+
 	<div id="nav">
 		<ul class="navMenu">
 			<li><a href="">首页</a></li>
@@ -56,7 +60,8 @@
 列表默认是垂直方向排列的，而常见的导航栏主菜单是水平方向排列，二级下拉菜单是垂直方向排列的，所以我们需要对主菜单的li元素设置浮动，让其水平排列。设置浮动后，应记得清除浮动。可以使用class来作为公共的浮动和清除浮动的样式，然后在需要浮动的元素上添加相应的class，在浮动元素的父元素上添加清除浮动的class。
 
 **CSS代码**
-<style type="text/css">
+
+	<style type="text/css">
 		/*reset*/
 		body, div, ul,li, a{padding: 0; margin:0;}
 		ul{list-style: none; }
@@ -73,45 +78,46 @@
 	</style>
 
 **HTML代码** 改为如下所示：
-<body>
-	<div id="nav">
-		<ul class="navMenu clearfix">
-			<li class="fl"><a href="">首页</a></li>
-			<li class="fl"><a href="">跟团游</a>
-				<ul class="subMenu">
-					<li><a href="">出境跟团</a></li>
-					<li><a href="">国内跟团</a></li>
-					<li><a href="">周边跟团</a></li>
-					<li><a href="">当地参团</a></li>
-				</ul>
-			</li>
-			<li class="fl"><a href="">自助游</a>
-				<ul class="subMenu" >
-					<li><a href="">出境自助</a></li>
-					<li><a href="">国内自助</a></li>
-					<li><a href="">机票+酒店</a></li>
-					<li><a href="">火车+酒店</a></li>
-				</ul>
-			</li>
-			<li class="fl"><a href="">游轮</a>
-				<ul class="subMenu">
-					<li><a href="">包船专享</a></li>
-					<li><a href="">日韩航线</a></li>
-					<li><a href="">欧洲航线</a></li>
-					<li><a href="">三峡航线</a></li>
-					<li><a href="">美洲航线</a></li>
-				</ul>
-			</li>
-			<li class="fl"><a href="">自驾</a>
-				<ul class="subMenu">
-					<li><a href="">周边自驾</a></li>
-					<li><a href="">国内自驾</a></li>
-					<li><a href="">出境自驾</a></li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-<body>
+
+	<body>
+		<div id="nav">
+			<ul class="navMenu clearfix">
+				<li class="fl"><a href="">首页</a></li>
+				<li class="fl"><a href="">跟团游</a>
+					<ul class="subMenu">
+						<li><a href="">出境跟团</a></li>
+						<li><a href="">国内跟团</a></li>
+						<li><a href="">周边跟团</a></li>
+						<li><a href="">当地参团</a></li>
+					</ul>
+				</li>
+				<li class="fl"><a href="">自助游</a>
+					<ul class="subMenu" >
+						<li><a href="">出境自助</a></li>
+						<li><a href="">国内自助</a></li>
+						<li><a href="">机票+酒店</a></li>
+						<li><a href="">火车+酒店</a></li>
+					</ul>
+				</li>
+				<li class="fl"><a href="">游轮</a>
+					<ul class="subMenu">
+						<li><a href="">包船专享</a></li>
+						<li><a href="">日韩航线</a></li>
+						<li><a href="">欧洲航线</a></li>
+						<li><a href="">三峡航线</a></li>
+						<li><a href="">美洲航线</a></li>
+					</ul>
+				</li>
+				<li class="fl"><a href="">自驾</a>
+					<ul class="subMenu">
+						<li><a href="">周边自驾</a></li>
+						<li><a href="">国内自驾</a></li>
+						<li><a href="">出境自驾</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	<body>
 
 ### 下拉菜单效果的实现
 如何实现鼠标移动到主菜单相应的li元素位置时，显示二级菜单，而移开鼠标则隐藏二级菜单。基本的实现方法纯CSS样式、jQuery、 原生JavaScript等三种实现方法。
@@ -123,20 +129,22 @@
 
 #### 方法二、 jQuery：   见demo2
 使用jQuery获取li元素，绑定mouseover、mouseout事件，调用jQuery的show()、hide()方法。参考代码如下：
-<script src="js/jquery-2.2.3.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$('.navMenu>li').mouseover( function() {
-			$(this).children('ul').show();
+
+	<script src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('.navMenu>li').mouseover( function() {
+				$(this).children('ul').show();
+			});
+		    $('.navMenu>li').mouseout( function() {
+				$(this).children('ul').hide();
+			});
 		});
-	    $('.navMenu>li').mouseout( function() {
-			$(this).children('ul').hide();
-		});
-	});
-</script>
+	</script>
 
 #### 方法三、 原生JavaScript：  见demo3
 先定义显示和隐藏元素的函数
+
 <script type="text/javascript">
 	// 定义显示函数
 	function showsubmenu(li) {
@@ -151,6 +159,7 @@
 </script>
 
 再调用函数， 在HTML代码中对应的li元素，添加函数的调用，代码修改如下。
+
 	<div id="nav">
 		<ul class="navMenu clearfix">
 			<li class="fl" onmouseover="showsubmenu(this)" onmouseout="hidesubmenu(this)"><a href="">首页</a></li>
@@ -188,4 +197,3 @@
 			</li>
 		</ul>
 	</div>
-
