@@ -1,7 +1,9 @@
 
-## 常见下拉菜单 common dropdown menu 
 
-### HTML结构
+
+### 下拉菜单
+
+#### HTML结构
 网页中导航栏是一个很常见的组件。通常，我们使用无序列表来制作导航栏。比如
 	<div id="nav">
 		<ul class="navMenu">
@@ -52,7 +54,7 @@
 		</ul>
 	</div>
  
-### 基本的CSS样式
+#### 基本的CSS样式
 列表默认是垂直方向排列的，而常见的导航栏主菜单是水平方向排列，二级下拉菜单是垂直方向排列的，所以我们需要对主菜单的li元素设置浮动，让其水平排列。设置浮动后，应记得清除浮动。可以使用class来作为公共的浮动和清除浮动的样式，然后在需要浮动的元素上添加相应的class，在浮动元素的父元素上添加清除浮动的class。
 
 **CSS代码**
@@ -113,15 +115,15 @@
 	</div>
 <body>
 
-### 下拉菜单效果的实现
+#### 下拉菜单效果的实现
 如何实现鼠标移动到主菜单相应的li元素位置时，显示二级菜单，而移开鼠标则隐藏二级菜单。基本的实现方法纯CSS样式、jQuery、 原生JavaScript等三种实现方法。
 
-#### 方法一、 纯CSS样式：   见demo1
+##### 方法一、 纯CSS样式：   见demo1
 最简单的方式是直接使用css的 `:hover` 来实现。当鼠标移动到主菜单的对应的li上时，二级菜单设置为可见的块级元素  `display: block;`
 	.navMenu li:hover .subMenu{display: block;}	/*hover是显示二级菜单*/
 
 
-#### 方法二、 jQuery：   见demo2
+##### 方法二、 jQuery：   见demo2
 使用jQuery获取li元素，绑定mouseover、mouseout事件，调用jQuery的show()、hide()方法。参考代码如下：
 <script src="js/jquery-2.2.3.min.js"></script>
 <script type="text/javascript">
@@ -135,7 +137,7 @@
 	});
 </script>
 
-#### 方法三、 原生JavaScript：  见demo3
+##### 方法三、 原生JavaScript：  见demo3
 先定义显示和隐藏元素的函数
 <script type="text/javascript">
 	// 定义显示函数
@@ -188,4 +190,3 @@
 			</li>
 		</ul>
 	</div>
-
