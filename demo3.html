@@ -1,69 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>用JavaScript实现下拉菜单的效果</title>
-	<style type="text/css">
-		body, div, ul,li, a{padding: 0; margin:0;}
-		ul{list-style: none;}
-		#nav{width: 600px; height: 40px; margin:0 auto; background-color: #eee; }
-		ul li{float: left; text-align: center; line-height: 40px; position: relative;}
-		a{text-decoration: none;color:#000; padding: 0 20px; display: block; width:80px; }
-		a:hover{background-color: #666; color: #fff;}
-		.subMenu{position: absolute; top: 40px; left: 0; display: none;}
-		.subMenu li{float:none; background-color:#eee; margin-left: 2px; }
-		.subMenu li a:hover{background-color: #06f;}
-	</style>
+  <meta charset="UTF-8">
+  <title>用JavaScript实现下拉菜单的效果</title>
+  <style type="text/css">
+    body, div, ul,li, a{padding: 0; margin:0;}
+    ul{list-style: none;}
+    #nav{width: 600px; height: 40px; margin:0 auto; background-color: #eee; }
+    ul li{float: left; text-align: center; line-height: 40px; position: relative;}
+    a{text-decoration: none;color:#000; padding: 0 20px; display: block; width:80px; }
+    a:hover{background-color: #666; color: #fff;}
+    .subMenu{position: absolute; top: 40px; left: 0; display: none;}
+    .subMenu li{float:none; background-color:#eee; margin-left: 2px; }
+    .subMenu li a:hover{background-color: #06f;}
+  </style>
 </head>
 <body>
-	<div id="nav">
-		<ul class="navMenu clearfix">
-			<li class="fl" onmouseover="showsubmenu(this)" onmouseout="hidesubmenu(this)"><a href="">首页</a></li>
-			<li class="fl" onmouseover="showsubmenu(this)" onmouseout="hidesubmenu(this)"><a href="">跟团游</a>
-				<ul class="subMenu">
-					<li><a href="">出境跟团</a></li>
-					<li><a href="">国内跟团</a></li>
-					<li><a href="">周边跟团</a></li>
-					<li><a href="">当地参团</a></li>
-				</ul>
-			</li>
-			<li class="fl" onmouseover="showsubmenu(this)" onmouseout="hidesubmenu(this)"><a href="">自助游</a>
-				<ul class="subMenu" >
-					<li><a href="">出境自助</a></li>
-					<li><a href="">国内自助</a></li>
-					<li><a href="">机票+酒店</a></li>
-					<li><a href="">火车+酒店</a></li>
-				</ul>
-			</li>
-			<li class="fl" onmouseover="showsubmenu(this)" onmouseout="hidesubmenu(this)"><a href="">游轮</a>
-				<ul class="subMenu">
-					<li><a href="">包船专享</a></li>
-					<li><a href="">日韩航线</a></li>
-					<li><a href="">欧洲航线</a></li>
-					<li><a href="">三峡航线</a></li>
-					<li><a href="">美洲航线</a></li>
-				</ul>
-			</li>
-			<li class="fl" onmouseover="showsubmenu(this)" onmouseout="hidesubmenu(this)"><a href="">自驾</a>
-				<ul class="subMenu">
-					<li><a href="">周边自驾</a></li>
-					<li><a href="">国内自驾</a></li>
-					<li><a href="">出境自驾</a></li>
-				</ul>
-			</li>
-		</ul>
-	</div>
+  <div id="nav">
+    <ul class="navMenu clearfix">
+      <li class="fl"><a href="">首页</a></li>
+      <li class="fl"><a href="">跟团游</a>
+        <ul class="subMenu">
+          <li><a href="">出境跟团</a></li>
+          <li><a href="">国内跟团</a></li>
+          <li><a href="">周边跟团</a></li>
+          <li><a href="">当地参团</a></li>
+        </ul>
+      </li>
+      <li class="fl"><a href="">自助游</a>
+        <ul class="subMenu" >
+          <li><a href="">出境自助</a></li>
+          <li><a href="">国内自助</a></li>
+          <li><a href="">机票+酒店</a></li>
+          <li><a href="">火车+酒店</a></li>
+        </ul>
+      </li>
+      <li class="fl"><a href="">游轮</a>
+        <ul class="subMenu">
+          <li><a href="">包船专享</a></li>
+          <li><a href="">日韩航线</a></li>
+          <li><a href="">欧洲航线</a></li>
+          <li><a href="">三峡航线</a></li>
+          <li><a href="">美洲航线</a></li>
+        </ul>
+      </li>
+      <li class="fl"><a href="">自驾</a>
+        <ul class="subMenu">
+          <li><a href="">周边自驾</a></li>
+          <li><a href="">国内自驾</a></li>
+          <li><a href="">出境自驾</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </body>
 <script type="text/javascript">
-	// 定义显示函数
-	function showsubmenu(li) {
-		var submenu = li.getElementsByClassName('subMenu')[0];
-		submenu.style.display="block";
-	}
-	// 定义隐藏函数
-	function hidesubmenu(li){
-		var submenu = li.getElementsByClassName('subMenu')[0];
-		submenu.style.display="none";
-	}
+//第一种方式
+/*window.onload = function(){
+  var List = document.getElementsByTagName('li');
+  for (var i = 0; i < List.length; i++) {
+    List[i].onmouseover = function() {
+      var u = this.getElementsByTagName('ul')[0];
+      if (u!=undefined) {
+        u.style.display="block";
+      }
+    };
+    List[i].onmouseout = function() {
+      var u = this.getElementsByTagName('ul')[0];
+      if (u!=undefined) {
+        u.style.display="none";
+      }
+    };
+  }
+};    */  
+
+//第二种方式：先定义函数，再调用。又分两种，可以在li标签元素里添加 onmouseover="showsubmenu(this)" onmouseout="hidesubmenu(this)； 也可以如下面所示，用js动态绑定事件。
+  // 定义显示函数
+  function showsubmenu(li) {
+    var submenu = li.getElementsByClassName('subMenu')[0];
+    submenu.style.display="block";
+  }
+  // 定义隐藏函数
+  function hidesubmenu(li){
+    var submenu = li.getElementsByClassName('subMenu')[0];
+    submenu.style.display="none";
+  }
+  // 用js动态绑定事件。
+  window.onload = function(){
+  var List = document.getElementsByTagName('li');
+  for (var i = 0; i < List.length; i++) {
+    List[i].onmouseover = function() {
+      showsubmenu(this);
+    };
+    List[i].onmouseout = function() {
+      var u = this.getElementsByTagName('ul')[0];
+      hidesubmenu(this)
+    };
+  }
+};    
 </script>
 </html>

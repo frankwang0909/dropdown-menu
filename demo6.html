@@ -22,15 +22,15 @@
     .subMenu li a:hover{background-color: #06f;}
     .sub-subMenu li a:hover{background-color: #656500;}
     /*css hover实现菜单的显示与隐藏，但是IE6以下不支持，可用js代码来实现*/
-    .navMenu li:hover .subMenu{display: block;} /*hover显示二级菜单*/
-    .subMenu li:hover .sub-subMenu{display: block;}/*hover显示三级级菜单*/
+/*    .navMenu li:hover .subMenu{display: block;} /*hover显示二级菜单*/
+    .subMenu li:hover .sub-subMenu{display: block;}/*hover显示三级级菜单*/*/
   </style>
   <script type="text/javascript">
     window.onload = function() {
       // 判断是否为IE6
-      var isIE = !!window.ActivexObject;
-      var isIE6 = isIE && !window.XMLHttpRequest;
-      if (isIE6) {
+      // var isIE = !!window.ActivexObject;
+      // var isIE6 = isIE && !window.XMLHttpRequest;
+      // if (isIE6) {
         var List = document.getElementsByTagName('li');
         for (var i = 0; i < List.length; i++) {
           List[i].onmouseover = function() {
@@ -38,15 +38,15 @@
             if (u!=undefined) {
               u.style.display="block";
             }
-          }
+          };
           List[i].onmouseout = function() {
             var u = this.getElementsByTagName('ul')[0];
             if (u!=undefined) {
               u.style.display="none";
             }
-          }
+          };
         }
-      }
+      // }
     }
   </script>
 </head>
